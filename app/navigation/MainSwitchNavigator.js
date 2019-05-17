@@ -1,15 +1,10 @@
 import React from "react";
 import { Platform } from "react-native";
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from "react-navigation";
+import { createStackNavigator, createSwitchNavigator } from "react-navigation";
 
-import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import SecondScreen from "../screens/SecondScreen";
 import ThirdScreen from "../screens/ThirdScreen";
-import FourthScreen from "../screens/FourthScreen";
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -30,8 +25,7 @@ HomeStack.navigationOptions = {
 };
 
 const SecondStack = createStackNavigator({
-  Seconda: SecondScreen,
-  Quarta: FourthScreen
+  Seconda: SecondScreen
 });
 
 SecondStack.navigationOptions = {
@@ -58,7 +52,7 @@ ThirdStack.navigationOptions = {
   )
 };
 
-export default createBottomTabNavigator({
+export default createSwitchNavigator({
   HomeStack,
   SecondStack,
   ThirdStack

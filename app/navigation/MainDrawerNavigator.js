@@ -1,42 +1,65 @@
-import React from 'react';
-import { Platform } from 'react-native';
-//import StyleSheet from "react-native"
-import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
+import React from "react";
+import {
+  Platform,
+  Dimensions,
+  ScrollView,
+  Text,
+  Image,
+  StyleSheet
+} from "react-native";
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  DrawerItems
+} from "react-navigation";
 
+import HomeScreen from "../screens/HomeScreen";
+import SecondScreen from "../screens/SecondScreen";
+import ThirdScreen from "../screens/ThirdScreen";
+import FourthScreen from "../screens/FourthScreen";
+import ReusableScreen from "../screens/ReusableScreen";
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import ReusableScreen from '../screens/ReusableScreen';
+const DEVICE_WIDTH = Dimensions.get("window").width;
+
+const drawerConfig = {
+  drawerWidth: DEVICE_WIDTH * 0.75,
+  contentComponent: props => (
+    <ScrollView style={styles.mainDrawer}>
+      <Image
+        source={require("../assets/images/logo.png")}
+        style={styles.menuImage}
+      />
+      <DrawerItems {...props} />
+    </ScrollView>
+  )
+};
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  Profilo: ReusableScreen
 });
 
-
-
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const SecondStack = createStackNavigator({
+  Seconda: SecondScreen,
+  Quarta: FourthScreen
 });
 
-
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ThirdStack = createStackNavigator({
+  Terza: ThirdScreen,
+  Profilo: ReusableScreen
 });
 
-
-
-export default createDrawerNavigator({
-  Home: HomeStack,
-  Second: LinksStack,
-  Third: SettingsStack,
-  Reusable: ReusableScreen,
-}
+export default createDrawerNavigator(
+  {
+    Home: HomeStack,
+    Second: SecondStack,
+    Third: ThirdStack,
+    Profilo: ReusableScreen
+  },
+  drawerConfig
 );
 
-//const styles= StyleSheet.create({
-  //mainDrawer: {padding:10},
-  //menuImage: {resizeMode: "center", padding: 10}
-//});
-
+const styles = StyleSheet.create({
+  mainDrawer: { padding: 10 },
+  menuImage: { resizeMode: "center", padding: 10 }
+});

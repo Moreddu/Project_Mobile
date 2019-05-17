@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Mario",
+    "surname": "Piras",
+    "username": "Zippi",
+    "email": "mariopiras@gmail.com",
+    "city": "Dichiagliari",
+    "uri": "https://yt3.ggpht.com/a-/AAuE7mDQMHjnKzsjhCEpHcGl66xKOuK6zjym9C8edg=s900-mo-c-c0xffffffff-rj-k-no"
+  },
+  {
+    "id": 2,
+    "name": "Nico",
+    "surname": "Bortis",
+    "username": "Sant'Effisi",
+    "email": "nicobortis@gmail.com",
+    "city": "Casteddu",
+    "uri": "https://static-www.castedduonline.it/wp-content/2017/06/20330-653x367.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Salvatore",
+    "surname": "Zedda",
+    "username": "Passaword",
+    "email": "giannipiras@gmail.com",
+    "city": "Ortacesus",
+    "uri": "https://i.ytimg.com/vi/pGoFsM8Ikiw/hqdefault.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Sonia",
+    "surname": "Sonia",
+    "username": "Due euro",
+    "email": "sonia@gmail.com",
+    "city": "Casteddu",
+    "uri": "https://i.ytimg.com/vi/wHG4wKsiQ-c/hqdefault.jpg"
+  }
+]
