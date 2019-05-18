@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
   ActivityIndicator,
-  Button
+  ImageBackground
 } from "react-native";
 import { Icon } from "expo";
 import { DrawerActions } from "react-navigation";
@@ -65,15 +65,20 @@ export default class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+      <ImageBackground
+          source={{ uri: "https://www.ispazio.net/wp-content/uploads/2013/06/iOS_7_Space_Wallpaper_iSpazio.png.jpg" }}
+          style={styles.background}
+        >
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+        
           <View style={styles.welcomeContainer}>
             <Image
               source={
                 __DEV__
-                  ? require("../assets/images/logo.png")
+                  ? require("../assets/images/logo.png") 
                   : require("../assets/images/logo.png")
               }
               style={styles.welcomeImage}
@@ -91,9 +96,10 @@ export default class HomeScreen extends React.Component {
               Elenco Utenti
             </Text>
 
-            </TouchableOpacity>
+            </TouchableOpacity> 
+           
 
-            {this.state.users.map((user, i) => (
+            {/*this.state.users.map((user, i) => (
               <View key={i} style={styles.helpContainer}>
                 <TouchableOpacity
                   onPress={() => {
@@ -113,10 +119,14 @@ export default class HomeScreen extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-            ))}
+            ))*/} 
+      
           </View>
+          
         </ScrollView>
+        </ImageBackground>
       </View>
+      
     );
   }
 }
@@ -124,7 +134,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF"
+    backgroundColor: "transparent"
   },
   developmentModeText: {
     marginBottom: 20,
@@ -164,7 +174,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 25,
     color: "rgba(96,100,109, 1)",
     lineHeight: 24,
     textAlign: "center"
@@ -205,8 +215,15 @@ const styles = StyleSheet.create({
     paddingVertical: 15
   },
   helpLinkText: {
-    fontSize: 14,
+    fontSize: 22,
     color: "#2e78b7",
     textAlign: "center"
-  }
+  },
+  background: {
+    paddingVertical: 30,
+    flex: 1,
+    resizeMode: "cover",
+    alignItems: "center",
+    justifyContent: "center"
+  },
 });
