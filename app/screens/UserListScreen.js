@@ -15,21 +15,20 @@ import { DrawerActions } from "react-navigation";
 import { MonoText } from "../components/StyledText";
 import users from "../database/users.json";
 
-export default class HomeScreen extends React.Component {
+export default class UserListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Home",
+    title: "Utenti",
     headerLeft: (
-      <TouchableOpacity
+        <TouchableOpacity
         onPress={() => {
-          navigation.dispatch(DrawerActions.toggleDrawer());
-        }}
-      >
+            navigation.navigate("Home");
+        }}>
         <Icon.Ionicons
-          name="ios-menu"
-          size={24}
-          style={{ color: "#000", marginHorizontal: 10 }}
+        name="ios-arrow-round-back"
+        size={24}
+        style={{color: "#000", marginHorizontal: 10}}
         />
-      </TouchableOpacity>
+        </TouchableOpacity>
     )
   });
 
@@ -69,32 +68,20 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require("../assets/images/logo.png")
-                  : require("../assets/images/logo.png")
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+          
 
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Schermata home</Text>
+            <Text style={styles.getStartedText}>Lista Utenti</Text>
 
-            <TouchableOpacity
-            onPress={() => {
-                this.props.navigation.navigate("Utenti")
-            }}>
-            <Text style={styles.helpLinkText}>
-              Elenco Utenti
-            </Text>
-
-            </TouchableOpacity>
+            
 
             {this.state.users.map((user, i) => (
+                
               <View key={i} style={styles.helpContainer}>
+                  <Image style={styles.image}
+                  source={{uri:user.uri}}
+                  ></Image>
+                  
                 <TouchableOpacity
                   onPress={() => {
                     this.props.navigation.navigate("Profilo", {
@@ -108,7 +95,7 @@ export default class HomeScreen extends React.Component {
                   style={styles.helpLink}
                 >
                   <Text style={styles.helpLinkText}>
-                    Clicca qui per vedere il profilo di {user.name}{" "}
+                    {user.name}{" "}
                     {user.surname}
                   </Text>
                 </TouchableOpacity>
@@ -185,7 +172,7 @@ const styles = StyleSheet.create({
         elevation: 20
       }
     }),
-    alignItems: "center",
+    
     backgroundColor: "#fbfbfb",
     paddingVertical: 20
   },
@@ -199,14 +186,17 @@ const styles = StyleSheet.create({
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: "center"
+    flex:1,
+    flexDirection:'row',
+    justifyContent: "flex-start" //parte da sx
   },
   helpLink: {
     paddingVertical: 15
   },
   helpLinkText: {
-    fontSize: 14,
+    fontSize: 20,
     color: "#2e78b7",
-    textAlign: "center"
-  }
+    textAlign: "right"
+  },
+  image: { width: 80, height: 80, resizeMode: "cover", borderRadius: 80 }
 });
